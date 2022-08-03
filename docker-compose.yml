@@ -4,13 +4,13 @@ services:
     build:
       context: assembly/
     volumes:
-      - share:/mnt/share
+      - share:/mnt/share/
 
   production:
     build:
       context: production/
     volumes:
-      - share:/mnt/share
+      - share:/opt/apache-tomcat-10.0.23/webapps
     ports:
        - "8080:8080"  
     depends_on:
