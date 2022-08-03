@@ -7,4 +7,5 @@ WORKDIR /opt/share
 RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
 RUN cd boxfuse-sample-java-war-hello && mvn package
 RUN cd boxfuse-sample-java-war-hello && cd target && cp hello-1.0.war /opt/share
+VOLUME [ "/boxfuse-sample-java-war-hello/target/hello-1.0.war" ]
 CMD ["bash"]
