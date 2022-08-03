@@ -3,11 +3,17 @@ services:
   assembly:
     build:
       context: assembly/
+    volumes:
+      - share: /mnt/share
 
   production:
     build:
       context: production/
-  ports:
-     - "8080:8080"  
-  depends_on:
-    - assembly
+    volumes:
+      - ./opt/share/boxfuse-sample-java-war-hello/target/hello-1.0.war:/opt/apache-tomcat-10.0.23/webapps
+    ports:
+       - "8080:8080"  
+    depends_on:
+      - assembly
+volumes:
+  share: 
