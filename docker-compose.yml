@@ -4,7 +4,7 @@ services:
     build:
       context: assembly/
     volumes:
-      - share:/mnt/share/
+      - share:/opt/share/
 
   production:
     build:
