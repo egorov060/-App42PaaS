@@ -21,7 +21,7 @@ ENV CLASSPATH:       /opt/apache-tomcat-10.0.23t/bin/bootstrap.jar:/opt/apache-t
 #RUN cd /root
 #RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
 #WORKDIR /opt/share
-RUN cd /opt/share && cp hello-1.0.war /opt/apache-tomcat-10.0.23/webapps
+#RUN cd /opt/share && cp hello-1.0.war /opt/apache-tomcat-10.0.23/webapps
 EXPOSE 8080
 CMD ["/opt/apache-tomcat-10.0.23/bin/catalina.sh", "run", "java","bash"]
 
