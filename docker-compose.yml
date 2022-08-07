@@ -9,7 +9,7 @@ services:
   production:
     image: tomcat:8-jre8-alpine
     volumes:
-      - share:/usr/local/tomcat/webapps
+      - share:/usr/local/tomcat/webapps/
     ports:
        - "8080:8080"  
     depends_on:
