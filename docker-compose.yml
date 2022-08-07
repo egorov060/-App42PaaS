@@ -4,7 +4,7 @@ services:
     build:
       context: assembly/
     volumes:
-      - share:/opt/share/
+      - share:/opt/boxfuse-sample-java-war-hello/target/
 
   production:
     build:

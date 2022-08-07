@@ -1,12 +1,7 @@
-FROM ubuntu:20.04
-RUN apt update
-RUN apt install -y default-jdk
-RUN apt install -y git
-RUN apt install -y maven
-#WORKDIR /opt
+FROM maven:latest
+WORKDIR /opt
 RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
 #RUN cd boxfuse-sample-java-war-hello && mvn package
 #RUN cd boxfuse-sample-java-war-hello && cd target && cp hello-1.0.war /opt/share
-RUN mkdir /opt/share && cd boxfuse-sample-java-war-hello && mvn package && cd target && cp hello-1.0.war /opt/share
+RUN cd /opt/boxfuse-sample-java-war-hello && mvn package
 #VOLUME [ "/opt/share/boxfuse-sample-java-war-hello/target/", "/opt/share"]
-CMD ["bash"]
