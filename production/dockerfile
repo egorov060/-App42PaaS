@@ -7,10 +7,10 @@ RUN apt install -y git
 #RUN apt install -y wget
 RUN useradd -m -U -d /opt/tomcat -s /bin/false tomcat
 #RUN wget https://dlcdn.apache.org/tomcat/tomcat-10/v10.0.23/bin/apache-tomcat-10.0.23.tar.gz -P /tmp
-RUN cd /tmp && git clone https://github.com/egorov060/docker.git
+RUN cd /tmp && git clone https://github.com/egorov060/tomcat.service.git
 #RUN git clone https://github.com/egorov060/docker.git
-RUN tar -xf /tmp/docker/apache-tomcat-10.0.23.tar.gz -C /opt/
-RUN cd /tmp/docker && cp tomcat.service /etc/systemd/system/
+RUN tar -xf /tmp/tomcat.service/apache-tomcat-10.0.23.tar.gz -C /opt/
+RUN cd /tmp/tomcat.service && cp tomcat.service /etc/systemd/system/
 RUN chown -R tomcat: /opt/apache-tomcat-10.0.23/
 RUN sh -c 'chmod +x /opt/apache-tomcat-10.0.23/bin/*.sh'
 ENV CATALINA_BASE:   /opt/apache-tomcat-10.0.23
