@@ -67,7 +67,6 @@ volumes:
   my-db:
 
 networks:
-#Internal-only network for proper nginx proxying and ssh
   back:
     driver: bridge
     enable_ipv6: true
@@ -77,6 +76,5 @@ networks:
      config:
        - subnet: 172.16.238.0/24
        - subnet: 2001:3984:3989::/64 
-#External network actually
   default:
     driver: bridge
