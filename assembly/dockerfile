@@ -1,6 +1,6 @@
 FROM maven:3.8.6-openjdk-11
 WORKDIR /opt
-RUN git clone https://github.com/shephertz/App42PaaS-Java-MySQL-Sample.git
+RUN git clone https://github.com/egorov060/App42PaaS-Java-MySQL-Sample.git
 #RUN cd boxfuse-sample-java-war-hello && mvn package
 #RUN cd boxfuse-sample-java-war-hello && cd target && cp hello-1.0.war /opt/share
 RUN mvn -f /opt/App42PaaS-Java-MySQL-Sample/pom.xml package

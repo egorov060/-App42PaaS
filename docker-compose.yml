@@ -6,43 +6,74 @@ services:
       context: assembly/
     volumes:
       - share:/opt/App42PaaS-Java-MySQL-Sample/target/
+      - config:/App42PaaS-Java-MySQL-Sample/src
 
   db:
     image: mysql:5.7
     restart: always
     environment:
       MYSQL_DATABASE: 'db'
-      # So you don't have to use root, but you can if you like
       MYSQL_USER: 'user'
-      # You can use whatever password you like
       MYSQL_PASSWORD: '123456'
-      # Password for root access
       MYSQL_ROOT_PASSWORD: '123456'
     ports:
-      # <Port exposed> : < MySQL Port running inside container>
       - '3306:3306'
     expose:
-      # Opens port 3306 on the container
       - '3306'
-      # Where our data will be persisted
     volumes:
       - my-db:/var/lib/mysql
+    networks:
+      back:
+        ipv4_address: 172.16.238.2
+      default:
+
+  phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - '8081:80'
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: 123456
 
   production:
-    image: tomcat:jre8-alpine
+#    image: tomcat:jre8-alpine
+    build:
+      context: production/    
     links: 
         - db:db
     volumes:
-      - share:/usr/local/tomcat/webapps/
+      - share:/opt/apache-tomcat-10.0.23/webapps/
+#      - share:/usr/local/tomcat/webapps/
     ports:
        - "8080:8080"
     environment:
         MYSQL_USER: user
         MYSQL_PASSWORD: 123456
         MYSQL_ROOT_PASSWORD: 123456
+    networks:
+      back:
+        ipv4_address: 172.16.238.3
+      default:
     depends_on:
       - assembly
       - db
 volumes:
   share:
   my-db:
+
+networks:
+#Internal-only network for proper nginx proxying and ssh
+  back:
+    driver: bridge
+    enable_ipv6: true
+    internal: true
+    ipam:
+     driver: default
+     config:
+       - subnet: 172.16.238.0/24
+       - subnet: 2001:3984:3989::/64 
+#External network actually
+  default:
+    driver: bridge
