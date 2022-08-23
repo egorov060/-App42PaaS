@@ -44,8 +44,8 @@ services:
     links: 
         - db:db
     volumes:
-      - share:/opt/apache-tomcat-9.0.65/webapps/
-      - config:/opt/apache-tomcat-9.0.65/webapps/ROOT/
+      - share:/opt/apache-tomcat-8.5.82/webapps/
+      - config:/opt/apache-tomcat-8.5.82/webapps/ROOT/
 
 #      - share:/usr/local/tomcat/webapps/
     ports:
