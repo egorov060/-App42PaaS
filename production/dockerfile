@@ -4,16 +4,16 @@ RUN apt install -y default-jdk
 RUN apt install -y git
 RUN useradd -m -U -d /opt/tomcat -s /bin/false tomcat
 RUN cd /tmp && git clone https://github.com/egorov060/tomcat.service.git
-RUN tar -xf /tmp/tomcat.service/apache-tomcat-10.0.23.tar.gz -C /opt/
+RUN tar -xf /tmp/tomcat.service/apache-tomcat-9.0.65.tar.gz -C /opt/
 RUN cd /tmp/tomcat.service && cp tomcat.service /etc/systemd/system/
-RUN chown -R tomcat: /opt/apache-tomcat-10.0.23/
-RUN cd /opt/apache-tomcat-10.0.23/ && mkdir ROOT
-RUN cd /tmp/tomcat.service/ && cd Config.properties /opt/apache-tomcat-10.0.23/ROOT/
-RUN sh -c 'chmod +x /opt/apache-tomcat-10.0.23/bin/*.sh'
-ENV CATALINA_BASE:   /opt/apache-tomcat-10.0.23
-ENV CATALINA_HOME:   /opt/apache-tomcat-10.0.23
-ENV CATALINA_TMPDIR: /opt/apache-tomcat-10.0.23/temp
+RUN chown -R tomcat: /opt/apache-tomcat-9.0.65/
+RUN cd /opt/apache-tomcat-9.0.65/ && mkdir ROOT
+RUN cd /tmp/tomcat.service/ && cp Config.properties /opt/apache-tomcat-9.0.65/ROOT/
+RUN sh -c 'chmod +x /opt/apache-tomcat-9.0.65/bin/*.sh'
+ENV CATALINA_BASE:   /opt/apache-tomcat-9.0.65
+ENV CATALINA_HOME:   /opt/apache-tomcat-9.0.65
+ENV CATALINA_TMPDIR: /opt/apache-tomcat-9.0.65/temp
 ENV JRE_HOME:        /usr
-ENV CLASSPATH:       /opt/apache-tomcat-10.0.23t/bin/bootstrap.jar:/opt/apache-tomcat-10.0.23/bin/tomcat-juli.jar
+ENV CLASSPATH:       /opt/apache-tomcat-9.0.65t/bin/bootstrap.jar:/opt/apache-tomcat-9.0.65/bin/tomcat-juli.jar
 EXPOSE 8080
-CMD ["/opt/apache-tomcat-10.0.23/bin/catalina.sh", "run", "java","bash"]
+CMD ["/opt/apache-tomcat-9.0.65/bin/catalina.sh", "run", "java","bash"]

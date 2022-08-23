@@ -6,7 +6,7 @@ services:
       context: assembly/
     volumes:
       - share:/opt/App42PaaS-Java-MySQL-Sample/target/
-      - config:/App42PaaS-Java-MySQL-Sample/src
+#      - config:/App42PaaS-Java-MySQL-Sample/src
 
   db:
     image: mysql:5.7
