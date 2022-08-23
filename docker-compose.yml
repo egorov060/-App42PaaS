@@ -6,7 +6,7 @@ services:
       context: assembly/
     volumes:
       - share:/opt/App42PaaS-Java-MySQL-Sample/target/
-#      - config:/App42PaaS-Java-MySQL-Sample/src
+      - config:/opt/App42PaaS-Java-MySQL-Sample/src/
 
   db:
     image: mysql:5.7
@@ -45,6 +45,8 @@ services:
         - db:db
     volumes:
       - share:/opt/apache-tomcat-9.0.65/webapps/
+      - config:/opt/apache-tomcat-9.0.65/webapps/ROOT/
+
 #      - share:/usr/local/tomcat/webapps/
     ports:
        - "8080:8080"
@@ -61,6 +63,7 @@ services:
       - db
 volumes:
   share:
+  config:
   my-db:
 
 networks:
