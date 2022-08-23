@@ -8,7 +8,9 @@ RUN tar -xf /tmp/tomcat.service/apache-tomcat-9.0.65.tar.gz -C /opt/
 RUN cd /tmp/tomcat.service && cp tomcat.service /etc/systemd/system/
 RUN chown -R tomcat: /opt/apache-tomcat-9.0.65/
 RUN cd /opt/apache-tomcat-9.0.65/ && mkdir ROOT
+RUN cd /opt/apache-tomcat-9.0.65/webapps/ && mkdir ROOT
 RUN cd /tmp/tomcat.service/ && cp Config.properties /opt/apache-tomcat-9.0.65/ROOT/
+RUN cd /tmp/tomcat.service/ && cp Config.properties /opt/apache-tomcat-9.0.65/webapps/ROOT/
 RUN sh -c 'chmod +x /opt/apache-tomcat-9.0.65/bin/*.sh'
 ENV CATALINA_BASE:   /opt/apache-tomcat-9.0.65
 ENV CATALINA_HOME:   /opt/apache-tomcat-9.0.65
