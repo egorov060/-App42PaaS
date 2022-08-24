@@ -9,7 +9,7 @@ services:
 #      - config:/opt/App42PaaS-Java-MySQL-Sample/config/
 
   db:
-    image: mysql:5.7
+    image: mysql:8.0.28
     restart: always
     environment:
       MYSQL_DATABASE: 'db'
