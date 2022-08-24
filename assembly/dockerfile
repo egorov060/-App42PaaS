@@ -4,5 +4,5 @@ RUN git clone https://github.com/egorov060/App42PaaS-Java-MySQL-Sample.git
 #RUN cd boxfuse-sample-java-war-hello && mvn package
 #RUN cd boxfuse-sample-java-war-hello && cd target && cp hello-1.0.war /opt/share
 RUN mvn -f /opt/App42PaaS-Java-MySQL-Sample/pom.xml package
-RUN cp -rp /opt/App42PaaS-Java-MySQL-Sample/WebContent/* /opt/App42PaaS-Java-MySQL-Sample/target/
+#RUN cp -rp /opt/App42PaaS-Java-MySQL-Sample/WebContent/* /opt/App42PaaS-Java-MySQL-Sample/target/
 #VOLUME [ "/opt/share/boxfuse-sample-java-war-hello/target/", "/opt/share"]

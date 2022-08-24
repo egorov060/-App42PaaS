@@ -7,9 +7,9 @@ RUN cd /tmp && git clone https://github.com/egorov060/tomcat.service.git
 RUN tar -xf /tmp/tomcat.service/apache-tomcat-8.5.82.tar.gz -C /opt/
 RUN cd /tmp/tomcat.service && cp tomcat.service /etc/systemd/system/
 RUN chown -R tomcat: /opt/apache-tomcat-8.5.82/
-RUN cd /opt/apache-tomcat-8.5.82/ && mkdir ROOT
-RUN cd /tmp/tomcat.service/ && cp Config.properties /opt/apache-tomcat-8.5.82/ROOT/
-RUN cd /opt/apache-tomcat-8.5.82/webapps/ && mkdir ROOT
+#RUN cd /opt/apache-tomcat-8.5.82/ && mkdir ROOT
+#RUN cd /tmp/tomcat.service/ && cp Config.properties /opt/apache-tomcat-8.5.82/ROOT/
+#RUN cd /opt/apache-tomcat-8.5.82/webapps/ && mkdir ROOT
 RUN sh -c 'chmod +x /opt/apache-tomcat-8.5.82/bin/*.sh'
 ENV CATALINA_BASE:   /opt/apache-tomcat-8.5.82
 ENV CATALINA_HOME:   /opt/apache-tomcat-8.5.82
